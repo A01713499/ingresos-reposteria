@@ -1,33 +1,68 @@
-print("Nuestro menú se mostrará a continuación:\n POSTRES/núm-> 25 Pays de manzana - 50 Galletas - 40 Cheescakes")
+
+def pasteles(producto_a):
+    if producto_a.lower().replace(" ","") == "chocolate":
+        return 40
+    elif producto_a.lower().replace(" ","") == "vainilla":
+        return 40
+    elif producto_a.lower().replace(" ","") == "tresleches":
+        return 45
+    else:
+        return 0
+def bebidas(producto_b):  
+    if producto_b.lower().replace(" ","") == "café":
+        return 30
+    elif producto_b.lower().replace(" ","")  == "malteada":
+        return 35
+    elif producto_b.lower().replace(" ","")  == "té":
+        return 35
+    else:
+        return 0
+def postres(producto_c): 
+    if producto_c.lower().replace(" ","") == "paydemanzana":
+        return 30
+    elif producto_c.lower().replace(" ","")  == "galleta":
+        return 15
+    elif producto_c.lower().replace(" ","")  == "cheesecake":
+        return 25
+    else:
+        return 0
+
+print("Nuestro menú se mostrará a continuación:\n POSTRES-> Pays de manzana, Galletas, Cheescakes")
 print(" PASTELES-> Chocolate, Vainilla, Tres leches")
 print(" BEBIDAS-> Café, Malteada, Té  \n")
 
-#si es pastel, especificar el sabor"
-
-producto=str(input("Ingresa tu producto:"))
-
-def pasteles(producto_a):
-    if producto_a.lower().replace(" ","") == "pasteldechocolate":
-        print (40)
-    elif producto_a.lower().replace(" ","") == "pasteldevainilla":
-        print (40)
-    elif producto_a.lower().replace(" ","") == "pasteldetresleches":
-        print (45) 
-def bebidas(producto_b):  
-    if producto_b.lower().replace(" ","") == "café":
-        print (30)
-    elif producto_b.lower().replace(" ","")  == "malteada":
-        print (35)
-    elif producto_b.lower().replace(" ","")  == "té":
-        print (35)
-def postres(producto_c): 
-    if producto_c.lower().replace(" ","") == "paydemanzana":
-        print (30)
-    elif producto_c.lower().replace(" ","")  == "galleta":
-        print (15)
-    elif producto_c.lower().replace(" ","")  == "cheesecake":
-        print (25)
-
-pasteles(producto)
-bebidas(producto)
-postres(producto)
+tipo = input("Elige tu categoría de producto e ingresa la letra correspondiente: \n A-Postres \n B-Pasteles \n C-Bebidas \n")
+tipo = tipo.upper()  
+ 
+def calcularTotal(precio):
+    cantidad = int(input("¿Cuál será la cantidad?: "))
+    total = precio * cantidad
+    print("El total de tu compra es: ", total)
+    
+    
+def menuA ():
+    print (" \nLos sabores se muestran a continuación: \n Chocolate - Vainilla - Tres leche")
+    precio = pasteles(str(input("Ingresa tu producto: ")))
+    calcularTotal(precio)
+def menuB ():
+    print (" \nLos productos se muestran a continuación: \n Café - Malteada - Té")
+    precio = bebidas(str(input("Ingresa tu producto: ")))
+    
+    if precio == 0:
+        print("No tenemos ese producto :(")
+        return
+        
+    calcularTotal(precio)    
+def menuC ():
+    print (" \nLos productos se muestran a continuación: \n Pay de manzana - Galleta - Cheesecake")
+    precio = postres(str(input("Ingresa tu producto: ")))
+    calcularTotal(precio)
+    
+if tipo == "A":
+    menuA()
+elif tipo == "B":
+    menuB()
+elif tipo == "C":
+    menuC()
+    
+    
