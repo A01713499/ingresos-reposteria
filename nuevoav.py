@@ -26,13 +26,14 @@ def postres(producto_c):
         return 25
     else:
         return 0
+def inicio(): 
+    print("\n Nuestro menú se mostrará a continuación:\n POSTRES-> Pays de manzana, Galletas, Cheescakes")
+    print(" PASTELES-> Chocolate, Vainilla, Tres leches")
+    print(" BEBIDAS-> Café, Malteada, Té  \n")
 
-print("Nuestro menú se mostrará a continuación:\n POSTRES-> Pays de manzana, Galletas, Cheescakes")
-print(" PASTELES-> Chocolate, Vainilla, Tres leches")
-print(" BEBIDAS-> Café, Malteada, Té  \n")
-
-tipo = input("Elige tu categoría de producto e ingresa la letra correspondiente: \n A-Postres \n B-Pasteles \n C-Bebidas \n")
-tipo = tipo.upper()  
+    tipo = input("Elige tu categoría de producto e ingresa la letra correspondiente: \n A-Postres \n B-Pasteles \n C-Bebidas \n")
+    tipo = tipo.upper()
+    return tipo
  
 def calcularTotal(precio):
     cantidad = int(input("¿Cuál será la cantidad?: "))
@@ -57,12 +58,14 @@ def menuC ():
     print (" \nLos productos se muestran a continuación: \n Pay de manzana - Galleta - Cheesecake")
     precio = postres(str(input("Ingresa tu producto: ")))
     calcularTotal(precio)
-    
-if tipo == "A":
-    menuA()
-elif tipo == "B":
-    menuB()
-elif tipo == "C":
-    menuC()
-    
+ 
+while True:
+    tipo = inicio()
+    if tipo == "A":
+        menuA()  
+    elif tipo == "B":
+        menuB()
+    elif tipo == "C":
+        menuC()
+    else: tipo=input("Incorrecto, elige una opción valida: \n")
     
