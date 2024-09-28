@@ -1,4 +1,3 @@
-
 def pasteles(producto_a):
     if producto_a.lower().replace(" ","") == "chocolate":
         return 40
@@ -69,3 +68,20 @@ while True:
         menuC()
     else: tipo=input("Incorrecto, elige una opción valida: \n")
     
+    productos = {
+    "A": {
+        "Chocolate": 40,
+        "Vainilla": 40,
+        "Tres leches": 45
+    },
+    "B": {
+        "Café": 30,
+        "Malteada": 35,
+        "Té": 35
+    },
+    "C": {
+        "Pay de manzana": 30,
+        "Galleta": 15,
+        "Cheesecake": 25
+    }
+}
