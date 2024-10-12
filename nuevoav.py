@@ -1,87 +1,119 @@
 def pasteles(producto_a):
-    if producto_a.lower().replace(" ","") == "chocolate":
+    if producto_a.lower().replace(" ", "") == "chocolate":
         return 40
-    elif producto_a.lower().replace(" ","") == "vainilla":
+    elif producto_a.lower().replace(" ", "") == "vainilla":
         return 40
-    elif producto_a.lower().replace(" ","") == "tresleches":
+    elif producto_a.lower().replace(" ", "") == "tresleches":
         return 45
     else:
         return 0
+
 def bebidas(producto_b):  
-    if producto_b.lower().replace(" ","") == "café":
+    if producto_b.lower().replace(" ", "") == "café":
         return 30
-    elif producto_b.lower().replace(" ","")  == "malteada":
+    elif producto_b.lower().replace(" ", "") == "malteada":
         return 35
-    elif producto_b.lower().replace(" ","")  == "té":
+    elif producto_b.lower().replace(" ", "") == "té":
         return 35
     else:
         return 0
+
 def postres(producto_c): 
-    if producto_c.lower().replace(" ","") == "paydemanzana":
+    if producto_c.lower().replace(" ", "") == "paydemanzana":
         return 30
-    elif producto_c.lower().replace(" ","")  == "galleta":
+    elif producto_c.lower().replace(" ", "") == "galleta":
         return 15
-    elif producto_c.lower().replace(" ","")  == "cheesecake":
+    elif producto_c.lower().replace(" ", "") == "cheesecake":
         return 25
     else:
         return 0
-def inicio(): 
-    print("\n Nuestro menú se mostrará a continuación:\n POSTRES-> Pays de manzana, Galletas, Cheescakes")
-    print(" PASTELES-> Chocolate, Vainilla, Tres leches")
-    print(" BEBIDAS-> Café, Malteada, Té  \n")
 
-    tipo = input("Elige tu categoría de producto e ingresa la letra correspondiente: \n A-Postres \n B-Pasteles \n C-Bebidas \n")
-    tipo = tipo.upper()
+#Menú:
+def inicio(): 
+    print("\n--- Nuestro menú se mostrará a continuación: ---")
+    print(" PASTELES-> Chocolate, Vainilla, Tres leches")
+    print(" BEBIDAS-> Café, Malteada, Té")
+    print(" POSTRES-> Pays de manzana, Galletas, Cheescakes  \n")
+    
+    tipo = input("Elige tu categoría de producto e ingresa la letra correspondiente: \n A-Pasteles \n B-Bebidas \n C-Postres \n")
+    tipo = tipo.upper() #Volverlo mayúsculas
     return tipo
- 
-def calcularTotal(precio):
-    cantidad = int(input("¿Cuál será la cantidad?: "))
-    total = precio * cantidad
-    print("El total de tu compra es: ", total)
-    
-    
-def menuA ():
-    print (" \nLos sabores se muestran a continuación: \n Chocolate - Vainilla - Tres leche")
-    precio = pasteles(str(input("Ingresa tu producto: ")))
-    calcularTotal(precio)
-def menuB ():
-    print (" \nLos productos se muestran a continuación: \n Café - Malteada - Té")
-    precio = bebidas(str(input("Ingresa tu producto: ")))
-    
+
+#Menú de pasteles
+def menuA():
+    print("\nLos sabores se muestran a continuación: \n Chocolate - Vainilla - Tres leches")
+    producto = input("Ingresa tu producto: ")
+    precio = pasteles(producto)
     if precio == 0:
         print("No tenemos ese producto :(")
-        return
-        
-    calcularTotal(precio)    
-def menuC ():
-    print (" \nLos productos se muestran a continuación: \n Pay de manzana - Galleta - Cheesecake")
-    precio = postres(str(input("Ingresa tu producto: ")))
-    calcularTotal(precio)
- 
+        return (None, 0)
+    cantidad = int(input("¿Cuál será la cantidad?: "))
+    total = calcularTotal(precio, cantidad)
+    return (producto, cantidad, total)
+#Menú de bebidas
+def menuB():
+    print("\nLos productos se muestran a continuación: \n Café - Malteada - Té")
+    producto = input("Ingresa tu producto: ")
+    precio = bebidas(producto)
+    if precio == 0:
+        print("No tenemos ese producto :(")
+        return (None, 0)
+    cantidad = int(input("¿Cuál será la cantidad?: "))
+    total = calcularTotal(precio, cantidad)
+    return (producto, cantidad, total)
+#Menú de postres
+def menuC():
+    print("\nLos productos se muestran a continuación: \n Pay de manzana - Galleta - Cheesecake")
+    producto = input("Ingresa tu producto: ")
+    precio = postres(producto)
+    if precio == 0:
+        print("No tenemos ese producto :(")
+        return (None, 0)
+    cantidad = int(input("¿Cuál será la cantidad?: "))
+    total = calcularTotal(precio, cantidad)
+    return (producto, cantidad, total)
+
+#Para el total del producto
+def calcularTotal(precio, cantidad):
+    return precio * cantidad
+
+
+carrito = []
+orden_final = []
+
 while True:
     tipo = inicio()
     if tipo == "A":
-        menuA()  
+        producto, cantidad, total = menuA()
     elif tipo == "B":
-        menuB()
+        producto, cantidad, total = menuB()
     elif tipo == "C":
-        menuC()
-    else: tipo=input("Incorrecto, elige una opción valida: \n")
+        producto, cantidad, total = menuC()
+    else:
+        print("\nINCORRECTO, POR FAVOR ELIGE UNA OPCIÓN VÁLIDA\n")
+        continue #Hace que el WHILE se vuelva a preguntar
+
+    if producto is not None:
+        carrito.append((producto, total))
+        
+        orden_final.append([producto, cantidad, total])
     
-    productos = {
-    "A": {
-        "Chocolate": 40,
-        "Vainilla": 40,
-        "Tres leches": 45
-    },
-    "B": {
-        "Café": 30,
-        "Malteada": 35,
-        "Té": 35
-    },
-    "C": {
-        "Pay de manzana": 30,
-        "Galleta": 15,
-        "Cheesecake": 25
-    }
-}
+    continuar = input("¿Desea agregar otro producto al carrito? (Si/No): ").upper()
+    if continuar != "SI":
+        break
+    
+
+#Para el carrito y total final:
+print("\n CARRITO DE COMPRAS:")
+total_final = 0
+#i->item
+for item in carrito:
+    print(f"Producto: {item[0]} - Total: ${item[1]}")
+    total_final += item[1]
+
+print(f"\nEl total final de tu compra es: ${total_final}")
+
+# 
+print("\n RESUMEN DE ORDEN FINAL:")
+for orden in orden_final:
+    print(f"Producto: {orden[0]} || Cantidad: {orden[1]} || Total: ${orden[2]}")
