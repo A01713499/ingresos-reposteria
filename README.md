@@ -9,7 +9,6 @@ Este programa tiene como objetivo principal ser una herramienta sencilla y fáci
 Al cliente, se le hará saber cual será el costo de su pedido en el momento posterior al registro de este y será registrado en caso de que su pedido desee continuar. Esto, servirá tanto para el usuario como para el cliente como un método de registro de compra, que evitará a su vez problemas de entendimiento usuario-cliente.
 
 ## Objetivo principal:
-Sabemos que iniciar un nuevo negocio puede presentar múltiples desafíos, en especial cuando el dueño es inexperto en el campo. Por lo que en ocasiones, los propietarios pueden verse frustrados o abrumados por la ausencia de un sistema ordenado y sencillo que logre llevar un registro de los ingresos del despacho.
 Nuestro sistema busca ser accesible, rápido y eficaz, de tal manera que resulte una herramienta sencilla y fácil de usar para el cliente, facilitando a los dueños o administradores del negocio la tarea de llevar un control correcto de las ventas, mejorando la gestión del tiempo.
 
 ## Contexto:
@@ -25,9 +24,13 @@ Este software, es capaz de llevar un registro de ventas, categorizar los product
 6. Dificultades en la generación de reportes financieros, que pueda afectar en la toma de decisiones estratégicas
 
 ## Instrucciones:  
-*Calculador Monetario de Cafeterías* es una herramienta indispensable en la gestión de ingresos de pequeños negocios. Eficiente y fácil de usar, a continuación se muestran las instrucciones a seguir para su uso:
-1. INGRESO DE DATOS: Será guardado dentro del código el nombre y precio de cada producto disponible en la cafetería.
+*Calculador Monetario de Cafeterías* es una herramienta indispensable para la gestión de ingresos en pequeños negocios. Eficiente y fácil de usar. A continuación se muestran las instrucciones a seguir para un uso correcto:
+1. Descargar el archivo y correr en terminal con:
+   **********
+   o abrir en Thonny y pulsar el botón de PLAY 
+2. Seguir las instrucciones mostradas en pantalla
+   - Ingresar los datos correspondientes de manera correcta y CON tilde según sea el caso.
 
+## Muchas gracias por utilizar *"Calculador Monetario de Cafeterías"* 
+## ¡Vuelva pronto :D !
 
-2. INGRESO DE PRODUCTOS VENDIDOS: Al concluir la jornada diaria, el usuario ingreserá los productos vendidos. El sistema almacenará estos datos.
-3. VISUALIZACIÓN DE INGRESOS: Cuando el usuario lo solicite,  podrá obtener un reporte que incluya la suma total de las ventas; ya sea dicho reporte diario, semanal, mensual o anual.
