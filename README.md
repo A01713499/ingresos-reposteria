@@ -25,8 +25,7 @@ Este software, es capaz de llevar un registro de ventas, categorizar los product
 
 ## Instrucciones:  
 *Calculador Monetario de Cafeterías* es una herramienta indispensable para la gestión de ingresos en pequeños negocios. Eficiente y fácil de usar. A continuación se muestran las instrucciones a seguir para un uso correcto:
-1. Descargar el archivo y correr en terminal con:
-   **********
+1. Descargar el archivo y correr en terminal
    o abrir en Thonny y pulsar el botón de PLAY 
 2. Seguir las instrucciones mostradas en pantalla
    - Ingresar los datos correspondientes de manera correcta y CON tilde según sea el caso.
