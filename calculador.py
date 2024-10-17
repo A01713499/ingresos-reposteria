@@ -62,8 +62,8 @@ def inicio():
     print(" BEBIDAS-> Café, Malteada, Té")
     print(" POSTRES-> Pay de manzana, Galleta, Cheesecake  \n")
     
-    tipo = input("""Elige tu categoría de producto e ingresa la letra correspondiente:
-\n A-Pasteles \n B-Bebidas \n C-Postres \n""")
+    tipo = input("Elige tu categoría de producto e ingresa la letra"
+        "correspondiente: \n A-Pasteles \n B-Bebidas \n C-Postres \n")
     
     tipo = tipo.upper() #.upper() para volverlo mayúsculas
     return tipo
@@ -74,12 +74,13 @@ def menuA():
     Muestra el menú de pasteles para seleccionar el producto y cantidad.
     Devuelve: El nombre del producto elegido, la cantidad y total.
     """
-    print("\nLos sabores se muestran a continuación: \n Chocolate - Vainilla - Tres leches")
+    print("\nLos sabores se muestran a continuación:"
+    "\n Chocolate - Vainilla - Tres leches")
     
     while True:
-        producto = input("Ingresa tu producto: ").lower().replace(" ","")  #.lower() para leerlo en minúsculas
-        
-        if producto != "chocolate" and producto != "vainilla" and producto != "tresleches":
+        producto = input("Ingresa tu producto: ").lower().replace(" ", "")
+        # .lower() para leerlo en minúsculas
+        if producto not in ["chocolate", "vainilla", "tresleches"]:
             print("No tenemos ese producto :(")
         else:
             precio = pasteles(producto)
@@ -93,14 +94,15 @@ def menuA():
         try:
             cantidad = int(input("¿Cuál será la cantidad?: "))
             if cantidad < 0:
-                print("La cantidad no debe ser menor a cero, por favor intenta de nuevo")
+                print("La cantidad no debe ser menor a cero, "
+                      "por favor intenta de nuevo")
             else:
                 total = calcularTotal(precio, cantidad)
                 break
         except ValueError:
             print("Por favor ingrese un número")
     
-    return (producto, cantidad, total)
+    return producto, cantidad, total
 
 #Menú de bebidas
 def menuB():
@@ -108,12 +110,13 @@ def menuB():
     Muestra el menú de bebidas para seleccionar el producto y cantidad.
     Devuelve: El nombre del producto elegido, la cantidad y total.
     """
-    print("\nLos productos se muestran a continuación: \n Café - Malteada - Té")
+    print("\nLos productos se muestran a continuación:"
+    "\n Café - Malteada - Té")
     
     while True:
-        producto = input("Ingresa tu producto: ").title()  #.title() para leerlo como título
-        
-        if producto != "Café" and producto != "Malteada" and producto != "Té":
+        producto = input("Ingresa tu producto: ").title()  
+        # .title() para leerlo como título
+        if producto not in ["Café", "Malteada", "Té"]:
             print("No tenemos ese producto :(")
         else:
             precio = bebidas(producto)
@@ -127,14 +130,15 @@ def menuB():
         try:
             cantidad = int(input("¿Cuál será la cantidad?: "))
             if cantidad < 0:
-                print("La cantidad no debe ser menor a cero, por favor intenta de nuevo")
+                print("La cantidad no debe ser menor a cero, "
+                      "por favor intenta de nuevo")
             else:
                 total = calcularTotal(precio, cantidad)
                 break
         except ValueError:
             print("Por favor ingrese un número")
     
-    return (producto, cantidad, total)
+    return producto, cantidad, total
 
 #Menú de postres
 def menuC():
@@ -142,12 +146,13 @@ def menuC():
     Muestra el menú de postres para seleccionar el producto y cantidad.
     Devuelve: El nombre del producto elegido, la cantidad y total.
     """
-    print("\nLos sabores se muestran a continuación: \n Pay de manzana - Galleta - Cheesecake")
+    print("\nLos sabores se muestran a continuación:"
+    "\n Pay de manzana - Galleta - Cheesecake")
     
     while True:
-        producto = input("Ingresa tu producto: ").title()  # .title() para leerlo como título
-        
-        if producto != "Pay de manzana" and producto != "Galleta" and producto != "Cheesecake":
+        producto = input("Ingresa tu producto: ").title()  
+        # .title() para leerlo como título
+        if producto not in ["Pay de manzana", "Galleta", "Cheesecake"]:
             print("No tenemos ese producto :(")
         else:
             precio = postres(producto)
@@ -161,14 +166,15 @@ def menuC():
         try:
             cantidad = int(input("¿Cuál será la cantidad?: "))
             if cantidad < 0:
-                print("La cantidad no debe ser menor a cero, por favor intenta de nuevo")
+                print("La cantidad no debe ser menor a cero, "
+                      "por favor intenta de nuevo")
             else:
                 total = calcularTotal(precio, cantidad)
                 break
         except ValueError:
             print("Por favor ingrese un número")
     
-    return (producto, cantidad, total)
+    return producto, cantidad, total
 
 #Para el total del producto
 def calcularTotal(precio, cantidad):
@@ -199,7 +205,7 @@ while True:
         
         orden_final.append([producto, cantidad, total])
     
-    continuar = input("¿Desea agregar otro producto al carrito? (Si/No): ").upper()
+    continuar = input("¿Agregará otro producto al carrito? (Si/No): ").upper()
     if continuar != "SI":
         break
     
